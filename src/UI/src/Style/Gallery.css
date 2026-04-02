@@ -1,0 +1,118 @@
+.gallery-container {
+    padding: 40px 0;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gallery-item {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.image-wrapper {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 375px; /* Zwiększono o 50% z 250px */
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(139, 115, 85, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-overlay span {
+    color: white;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 10px;
+}
+
+.image-wrapper:hover .image-overlay {
+    opacity: 1;
+}
+
+/* Modal styles */
+.gallery-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close-button {
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
+    color: #5C4033 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    z-index: 1;
+}
+
+.nav-button {
+    position: absolute !important;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #5C4033 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+@media (max-width: 600px) {
+    .gallery-container {
+        padding: 20px;
+    }
+    
+    .gallery-image {
+        height: 300px;
+    }
+}

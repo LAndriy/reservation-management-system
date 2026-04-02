@@ -1,0 +1,91 @@
+.reservation-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 90%;
+}
+
+.month-year-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.days-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.day-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.day-header {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.time-slot {
+    background-color: #d0e7ff;
+    transition: background-color 0.3s;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    width: 60px;
+    min-height: auto;
+}
+
+.time-slot:hover {
+    background-color: #add8ff;
+}
+
+.time-slot.selected {
+    background-color: #7a95ef;
+    color: #fff;
+}
+
+.time-slot.reserved {
+    background-color: #ffcccc;
+    cursor: not-allowed;
+    color: #000;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.navigation-buttons button:hover {
+    background-color: #e0e0e0;
+}
+
+.navigation-buttons button {
+    background-color: #f8f7f7;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin: 0 10px;
+}

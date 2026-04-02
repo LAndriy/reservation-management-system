@@ -1,0 +1,33 @@
+.admin-panel-container {
+    padding: 12px;
+    background-color: #f8f9fa;
+}
+
+.admin-panel-title {
+    color: #5C4033;
+}
+
+.mybox {
+    padding: 0 !important;
+}
+.alert {
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .admin-panel-container {
+        padding: 8px;
+    }
+
+    .admin-panel-title {
+        font-size: 1.5rem;
+    }
+
+    .table {
+        font-size: 0.8rem;
+    }
+
+    .assign-role-button {
+        font-size: 0.8rem;
+    }
+}

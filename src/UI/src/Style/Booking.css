@@ -1,0 +1,156 @@
+.booking-container {
+    padding: 40px 0;
+}
+
+.booking-card {
+    background-color: #fff !important;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden;
+}
+
+.booking-title {
+    color: #5C4033 !important;
+    font-weight: bold !important;
+    text-align: center;
+    margin-bottom: 32px !important;
+}
+
+.booking-stepper {
+    margin-bottom: 40px !important;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.step-icon.active {
+    background-color: #8B7355;
+}
+
+.booking-form {
+    padding: 20px;
+}
+
+.form-field {
+    width: 100% !important;
+    margin-bottom: 24px !important;
+}
+
+.form-field .MuiInputBase-root {
+    min-height: 56px;
+}
+
+.calendar-container {
+    margin: 20px 0;
+}
+
+.booking-details {
+    margin-top: 32px;
+    padding: 24px;
+    background-color: #F5F5DC;
+    border-radius: 8px;
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 24px !important;
+    height: 56px;
+    background-color: #8B7355 !important;
+    font-size: 1.1rem !important;
+    text-transform: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-field {
+    width: 100% !important;
+    margin: 20px 0 !important;
+}
+
+.MuiMenuItem-root {
+    padding: 15px 20px !important;
+    font-size: 1rem !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.MuiMenuItem-root:hover {
+    background-color: #F5F5DC !important;
+}
+
+.MuiSelect-select {
+    padding: 15px !important;
+}
+.MuiInputLabel-root {
+    font-size: 1.1rem !important;
+    color: #5C4033 !important;
+}
+.MuiOutlinedInput-root {
+    border-radius: 8px !important;
+}
+.MuiOutlinedInput-notchedOutline {
+    border-color: #8B7355 !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #5C4033 !important;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #5C4033 !important;
+    border-width: 2px !important;
+}
+
+.MuiSelect-icon {
+    color: #8B7355 !important;
+}
+
+.MuiMenu-paper {
+    margin-top: 8px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+
+.MuiMenuItem-root em {
+    color: #666 !important;
+    font-style: italic !important;
+}
+
+.MuiMenuItem-root .service-details {
+    color: #666;
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
+.submit-button:hover {
+    background-color: #5C4033 !important;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.time-slots.loading {
+    animation: pulse 5s infinite;
+}
+
+@media (max-width: 600px) {
+    .booking-container {
+        padding: 20px;
+    }
+    
+    .booking-stepper {
+        margin-bottom: 24px !important;
+    }
+    
+    .form-field {
+        margin-bottom: 16px !important;
+    }
+}

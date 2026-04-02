@@ -1,0 +1,118 @@
+/* AppointmentHistory.css */
+.appointment-container {
+    margin-top: 30px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-title {
+    color: #5C4033;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.appointment-list {
+    background-color: #fff;
+}
+
+.appointment-item {
+    border-bottom: 1px solid #F5F5DC;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.appointment-item:hover {
+    background-color: #FFF8DC;
+}
+
+.appointment-date {
+    color: #5C4033;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.appointment-details {
+    color: #8B7355;
+    margin-top: 4px;
+}
+
+.appointment-status {
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.status-scheduled {
+    color: #1976d2;
+}
+
+.status-completed {
+    color: #2e7d32;
+}
+
+.status-cancelled {
+    color: #d32f2f;
+}
+
+.status-noshow {
+    color: #ed6c02;
+}
+
+.cancel-button {
+    color: #d32f2f !important;
+    transition: all 0.3s ease !important;
+}
+
+.cancel-button:hover {
+    background-color: rgba(211, 47, 47, 0.1) !important;
+}
+
+/* Dialog styles */
+.dialog-title {
+    background-color: #F5F5DC;
+    color: #5C4033;
+    padding: 16px 24px;
+}
+
+.dialog-content {
+    padding: 24px;
+}
+
+.dialog-actions {
+    padding: 16px;
+    background-color: #fafafa;
+}
+
+.confirm-button {
+    background-color: #d32f2f !important;
+    color: white !important;
+}
+
+.confirm-button:hover {
+    background-color: #c62828 !important;
+}
+
+/* Notification styles */
+.notification {
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .appointment-container {
+        padding: 16px;
+    }
+
+    .appointment-title {
+        font-size: 1.5rem;
+    }
+
+    .appointment-item {
+        padding: 12px;
+    }
+}

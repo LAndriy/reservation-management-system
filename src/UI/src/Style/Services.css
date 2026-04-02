@@ -1,0 +1,121 @@
+.management-section {
+    background-color: #fff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 40px;
+    overflow: hidden !important;
+}
+
+.management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: #8B7355;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.management-header:hover {
+    background-color: #5C4033;
+}
+
+.management-header .MuiIconButton-root {
+    color: white;
+}
+
+.management-content {
+    padding: 24px;
+    background-color: #F5F5DC;
+}
+
+.services-container {
+    padding: 40px 0;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.category-card {
+    background-color: #fff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 20px;
+}
+
+.category-title {
+    color: #5C4033 !important;
+    font-weight: 600 !important;
+}
+
+.service-card {
+    background-color: #F5F5DC !important;
+    border-radius: 8px !important;
+    transition: transform 0.3s ease !important;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.service-name {
+    color: #5C4033 !important;
+    font-weight: 500 !important;
+    flex: 1;
+}
+
+.service-price {
+    color: #8B7355 !important;
+    font-weight: bold !important;
+    padding-left: 16px;
+}
+
+.service-description {
+    color: #666 !important;
+    margin: 12px 0 !important;
+    font-size: 0.9rem !important;
+}
+
+.service-details {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    color: #8B7355;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-item svg {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+    .services-container {
+        padding: 20px;
+    }
+    
+    .service-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .service-price {
+        padding-left: 0;
+        margin-top: 8px;
+    }
+}

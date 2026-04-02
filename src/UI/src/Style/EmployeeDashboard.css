@@ -1,0 +1,39 @@
+.employee-dashboard-container {
+    min-width: 1250px;
+    margin-top: 16px;
+    padding: 16px 32px 32px 32px;
+    background-color: #f8f9fa;
+}
+.days-container{
+    padding: 0;
+}
+
+.employee-dashboard-title {
+    font-size: 36px;
+    color: #5C4033;
+}
+
+.employee-button:hover {
+    background-color: #0056b3; /* Ciemniejszy niebieski przy hoverze */
+}
+
+.employee-badge {
+    border-radius: 4px;
+}
+
+.time-off-card {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.time-off-delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.time-off-delete-button:hover {
+    background-color: #c82333;
+}

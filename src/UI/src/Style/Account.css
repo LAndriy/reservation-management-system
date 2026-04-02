@@ -1,0 +1,137 @@
+/* Account.css */
+/* Główny kontener */
+.account-container {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 40px 20px !important;
+}
+
+/* Sekcje Paper */
+.account-section {
+    background-color: #fff !important;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 2rem !important;
+    padding: 2rem !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Style dla dialogów */
+.MuiDialog-paper {
+    border-radius: 15px !important;
+    overflow: hidden !important;
+}
+
+.MuiDialogTitle-root {
+    background-color: #F5F5DC !important;
+    color: #5C4033 !important;
+    padding: 20px 24px !important;
+}
+
+.MuiDialogContent-root {
+    padding: 24px !important;
+}
+
+.MuiDialogActions-root {
+    padding: 16px 24px !important;
+    background-color: #fafafa !important;
+}
+
+/* Style dla pól hasła */
+.password-field {
+    margin: 16px 0 !important;
+}
+
+.password-toggle-button {
+    color: #8B7355 !important;
+}
+
+/* Przyciski */
+.MuiButton-contained {
+    background-color: #8B7355 !important;
+    color: white !important;
+    text-transform: none !important;
+    padding: 10px 24px !important;
+    font-size: 1rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.MuiButton-contained:hover {
+    background-color: #5C4033 !important;
+}
+
+.MuiButton-outlined {
+    color: #8B7355 !important;
+    border-color: #8B7355 !important;
+    text-transform: none !important;
+    padding: 10px 24px !important;
+    font-size: 1rem !important;
+    border-radius: 8px !important;
+}
+
+.MuiButton-outlined:hover {
+    background-color: rgba(139, 115, 85, 0.04) !important;
+}
+
+/* Przyciski error */
+.MuiButton-containedError {
+    background-color: #d32f2f !important;
+}
+
+.MuiButton-containedError:hover {
+    background-color: #c62828 !important;
+}
+
+.MuiButton-outlinedError {
+    color: #d32f2f !important;
+    border-color: #d32f2f !important;
+}
+
+/* Style dla pól formularza */
+.MuiTextField-root {
+    margin: 12px 0 !important;
+}
+
+.MuiInputLabel-root {
+    color: #5C4033 !important;
+}
+
+.MuiOutlinedInput-root {
+    border-radius: 8px !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #8B7355 !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #5C4033 !important;
+}
+
+/* Ostrzeżenia i komunikaty */
+.warning-text {
+    color: #d32f2f !important;
+    font-size: 0.9rem !important;
+    margin: 8px 0 !important;
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
+    .account-container {
+        padding: 20px 16px !important;
+    }
+
+    .account-section {
+        padding: 16px !important;
+    }
+
+    .MuiDialog-paper {
+        margin: 16px !important;
+    }
+
+    .MuiButton-root {
+        width: 100% !important;
+        margin-bottom: 8px !important;
+    }
+}
