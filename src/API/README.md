@@ -1,55 +1,26 @@
 # AllAboutNail.API
 
-## Opis Projektu
-AllAboutNail.API to backend aplikacji służącej do zarządzania salonem kosmetycznym, specjalizującym się w usługach manicure i pedicure. API zostało zbudowane przy użyciu ASP.NET Core.
+Backend aplikacji realizujący logikę biznesową dla systemu zarządzania salonem kosmetycznym. API zbudowane w oparciu o architekturę ASP.NET Core, zapewniające obsługę rezerwacji, autoryzację użytkowników oraz zarządzanie harmonogramami pracowników.
 
-## Struktura Projektu
+## 🏗️ Struktura Projektu
 
-### Główne Komponenty
-- **Controllers/** - Kontrolery API odpowiedzialne za obsługę żądań HTTP
-- **Models/** - Modele danych reprezentujące encje biznesowe
-- **Data/** - Warstwa dostępu do danych i konfiguracja bazy danych
-- **Services/** - Warstwa usług zawierająca logikę biznesową
-- **Migrations/** - Migracje bazy danych
+Kod został zorganizowany z zachowaniem separacji warstw:
 
-### 1. Controllers
-Kontrolery API odpowiadające za obsługę żądań HTTP.
+* **Controllers/** - Udostępnia punkty końcowe (endpoints) i zarządza routingiem HTTP.
+* **Services/** - Realizuje główną logikę biznesową (np. walidacja dostępności terminów, generowanie JWT).
+* **Data/** - Definiuje kontekst bazy danych (Entity Framework Core) oraz repozytoria.
+* **Models/** - Reprezentuje encje domenowe oraz obiekty transferu danych (DTO).
+* **Migrations/** - Przechowuje historię zmian schematu bazy danych.
 
-### 2. Models
-Modele danych reprezentujące encje biznesowe.
-
-### 3. Services
-Warstwa usług zawierająca logikę biznesową:
-
-```csharp
-// JwtService.cs - serwis do obsługi tokenów JWT
-public class JwtService : IJwtService
-{
-    public async Task<string> GenerateJwtToken(User user)
-    {
-        var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Email, user.Email)
-        };
-        // Implementacja generowania tokena
-    }
-}
-```
-
-### 4. Data
-Warstwa dostępu do danych i konfiguracja bazy danych.
-
-## Kluczowe Funkcjonalności
+## ⚙️ Kluczowe Funkcjonalności i Implementacja
 
 ### 1. System Rezerwacji Wizyt
+Obsługuje proces tworzenia, anulowania i weryfikacji rezerwacji, przypisując je do konkretnych pracowników i usług.
+
 ```csharp
-// Przykład tworzenia rezerwacji
 public async Task<IActionResult> CreateAppointment([FromBody] AppointmentDto appointmentDto)
 {
     var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-    var client = await _userManager.FindByIdAsync(userId.ToString());
-    
     var appointment = new Appointment
     {
         EmployeeId = appointmentDto.EmployeeId,
@@ -63,11 +34,10 @@ public async Task<IActionResult> CreateAppointment([FromBody] AppointmentDto app
 }
 ```
 
-### 2. Zarządzanie Użytkownikami
+### 2. System Harmonogramowania
+Automatycznie wylicza dostępne sloty czasowe na podstawie godzin pracy salonu oraz już istniejących rezerwacji.
 
-### 3. System Harmonogramowania
 ```csharp
-// Przykład sprawdzania dostępności terminów
 public async Task<List<DateTime>> GetAvailableSlots(int employeeId, DateTime date)
 {
     var workingHours = await _context.WorkingHours
@@ -82,107 +52,57 @@ public async Task<List<DateTime>> GetAvailableSlots(int employeeId, DateTime dat
 }
 ```
 
-## Endpointy API
+### 3. Bezpieczeństwo i Autoryzacja (JWT)
+API zabezpieczone jest mechanizmem tokenów JWT. System weryfikuje tożsamość i zarządza dostępem na podstawie ról (Admin, Employee, Client).
+
+```csharp
+// Generowanie i walidacja oparta na Claims
+public async Task<string> GenerateJwtToken(User user)
+{
+    var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim(ClaimTypes.Email, user.Email),
+        new Claim(ClaimTypes.Role, user.Role)
+    };
+    // Implementacja podpisu
+}
+```
+
+## 📡 Główne Endpointy API
 
 ### Autentykacja
+- `POST /api/auth/register` - Rejestracja nowego klienta
+- `POST /api/auth/login` - Logowanie i pobieranie tokena JWT
 
 ### Zarządzanie Wizytami
-- `POST /api/appointments` - Tworzenie nowej wizyty
+- `POST /api/appointments` - Tworzenie nowej rezerwacji
 - `GET /api/appointments/available-slots` - Pobieranie dostępnych terminów
 - `PUT /api/appointments/{id}/cancel` - Anulowanie wizyty
-- `GET /api/appointments/user` - Historia wizyt użytkownika
+- `GET /api/appointments/user` - Historia wizyt zalogowanego użytkownika
 
-### Zarządzanie Użytkownikami
-- `POST /api/users` - Rejestracja nowego użytkownika
-- `GET /api/users/{id}` - Pobieranie danych użytkownika
-- `PUT /api/users/{id}` - Aktualizacja danych użytkownika
+### Administracja Użytkownikami
+- `GET /api/users/{id}` - Pobieranie danych profilowych
+- `PUT /api/users/{id}` - Aktualizacja danych
+- `POST /api/users/employee` - Dodawanie konta pracowniczego (Wymaga roli Admin)
 
-## Bezpieczeństwo
+## 🚀 Konfiguracja i Uruchomienie
 
-### 1. Autoryzacja JWT
-```csharp
-// Konfiguracja JWT w Program.cs
-services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(key),
-            ValidateIssuer = false,
-            ValidateAudience = false
-        };
-    });
-```
+### Wymagania
+* .NET 8.0 SDK
+* Serwer SQL (np. SQL Server Express lub obraz Docker)
 
-### 2. Walidacja Danych
-```csharp
-public class AppointmentDto
-{
-    [Required]
-    public int EmployeeId { get; set; }
-    
-    [Required]
-    public int ServiceId { get; set; }
-    
-    [Required]
-    [FutureDate]
-    public DateTime StartTime { get; set; }
-}
-```
+### Setup lokalny
+1. Przejdź do katalogu backendu: `cd src/Backend`
+2. Zaktualizuj łańcuch połączenia (`ConnectionStrings:DefaultConnection`) w pliku `appsettings.Development.json`.
+3. Zastosuj migracje do swojej bazy danych:
+   ```bash
+   dotnet ef database update
+   ```
+4. Uruchom aplikację:
+   ```bash
+   dotnet run
+   ```
 
-### 3. Obsługa Ról
-```csharp
-[Authorize(Roles = "Admin")]
-[HttpPost("api/users/create-employee")]
-public async Task<IActionResult> CreateEmployee(RegisterDto registerDto)
-{
-    var user = new User { /* ... */ };
-    await _userManager.CreateAsync(user, registerDto.Password);
-    await _userManager.AddToRoleAsync(user, "Employee");
-}
-```
-
-### 4. Szyfrowanie Danych
-```csharp
-// Przykład hashowania hasła
-public async Task<bool> ValidatePassword(string password)
-{
-    return await _userManager.CheckPasswordAsync(user, password);
-}
-```
-
-## Wymagania Systemowe
-- .NET 6.0 lub nowszy
-- SQL Server (baza danych)
-- Visual Studio 2022 lub nowszy (zalecane do rozwoju)
-
-## Konfiguracja Projektu
-
-### Instalacja
-1. Sklonuj repozytorium
-2. Otwórz projekt w Visual Studio
-3. Przywróć pakiety NuGet
-4. Zaktualizuj connection string w `appsettings.json`
-5. Uruchom migracje bazy danych:
-```
-dotnet ef database update
-```
-
-### Uruchomienie
-1. Skompiluj projekt
-2. Uruchom aplikację poprzez:
-```
-dotnet run
-```
-
-## Rozwój Projektu
-Projekt jest aktywnie rozwijany. Planowane funkcjonalności:
-- System powiadomień
-- Integracja z systemem płatności
-
-## Wsparcie
-W przypadku problemów lub pytań, prosimy o kontakt z zespołem deweloperskim lub utworzenie nowego issue w repozytorium.
-
-## Licencja
-Wszelkie prawa zastrzeżone
+## 📝 Licencja
+Projekt udostępniony na licencji MIT. Szablon i kod można swobodnie modyfikować.

@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# AllAboutNail - Frontend (UI)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplikacja kliencka dla systemu zarządzania salonem kosmetycznym. Interfejs został zbudowany w bibliotece React i zapewnia obsługę panelu klienta (rezerwacja wizyt) oraz operacji pracowniczych. Aplikacja komunikuje się z backendem w środowisku .NET poprzez REST API.
 
-## Available Scripts
+## 🛠️ Technologie i Narzędzia
 
-In the project directory, you can run:
+Interfejs użytkownika wykorzystuje następujący stos technologiczny:
+* **Silnik:** React 18 (zainicjalizowany przez Create React App)
+* **Styling i Komponenty:** [Material UI]
+* **Komunikacja z API:** [Axios]
+* **Zarządzanie stanem:** [React Context API]
+* **Routing:** [React Router Dom]
 
-### `npm start`
+## 🎯 Główne Funkcjonalności Interfejsu
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Aplikacja realizuje kluczowe procesy biznesowe po stronie przeglądarki:
+1. **Moduł Autoryzacji:** Formularze logowania i rejestracji z bezpieczną obsługą tokenów JWT przechowywanych po stronie klienta.
+2. **Kreator Rezerwacji:** Interaktywny kalendarz pozwalający użytkownikom na wybór usługi, pracownika oraz wolnego slotu czasowego.
+3. **Panel Użytkownika:** Widok historii wizyt oraz możliwość anulowania nadchodzących rezerwacji.
+4. **Zarządzanie (Dla ról pracowniczych):** [.....].
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⚙️ Konfiguracja Środowiska
 
-### `npm test`
+### Wymagania
+* [Node.js](https://nodejs.org/) w wersji LTS (v18+)
+* Menedżer pakietów NPM
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Zmienne środowiskowe
+Aplikacja wymaga skonfigurowania adresu URL do backendu API. 
+W głównym katalogu `Frontend` utwórz plik `.env.local` na podstawie poniższego schematu:
 
-### `npm run build`
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Uruchomienie lokalne
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Zainstaluj wymagane zależności projektowe:
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Uruchom serwer deweloperski:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+Aplikacja uruchomi się domyślnie pod adresem [http://localhost:3000](http://localhost:3000). Serwer wspiera Hot Module Replacement (HMR) – zmiany w kodzie będą natychmiast widoczne w przeglądarce.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📦 Budowanie na produkcję
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Aby wygenerować zoptymalizowaną, zminifikowaną wersję aplikacji gotową do wdrożenia (np. na serwerze statycznym lub w usługach chmurowych):
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run build
+```
+Gotowe pliki znajdą się w nowym folderze `build/`.
