@@ -93,7 +93,7 @@ const Contact = () => {
                         <Typography variant="h5" sx={{ color: '#5C4033', mb: 2 }}>
                             Lokalizacja
                         </Typography>
-                        <LoadScript googleMapsApiKey="AIzaSyAfPR19sg0qNMCRNaNG86pBySD9Dn91__E">
+                        <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
                             <GoogleMap mapContainerClassName="map-container" center={center} zoom={15}>
                                 <Marker position={center} />
                             </GoogleMap>
